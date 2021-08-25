@@ -12,6 +12,5 @@ steps:
       - sudo mkdir ./build
       - echo "hello world"
       - sudo touch ~/hello.txt
-      - who
       - mkdir hello
       - sudo systemctl status gitea.service
