@@ -11,6 +11,6 @@ steps:
     commands:
       - mkdir ~/build
       - echo "hello world"
-      - ping www.baidu.com
       - touch hello.txt
+      - mkdir hello
       - sudo systemctl status gitea.service
