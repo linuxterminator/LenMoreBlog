@@ -1,6 +1,6 @@
 kind: pipeline
 type: exec
-name: default
+name: 基本构建流程
 
 platform:
   os: linux
@@ -10,11 +10,11 @@ steps:
   - name: 首次构建测试
     commands:
       - pwd
+      - ls -l
       - cd ~
       - ls ~
       - sudo mkdir ./build
       - ls
-      - echo ${HOME}
       - echo $HOME
       - pwd
       - hostnamectl
