@@ -9,4 +9,4 @@ platform:
 steps:
   - name: 首次构建测试
     commands:
-      - echo hello world
+      - echo hello world >> ~/build.txt
