@@ -15,6 +15,7 @@ steps:
       - sudo mkdir ./build
       - ls
       - pwd
+      - hostnamectl
       - echo "hello world"
       - sudo touch ~/hello.txt
       - mkdir hello
