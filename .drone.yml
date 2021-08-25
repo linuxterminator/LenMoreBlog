@@ -12,7 +12,7 @@ steps:
       - pwd
       - cd ~
       - sudo mkdir ./build
+      - pwd
       - echo "hello world"
       - sudo touch ~/hello.txt
       - mkdir hello
-      - ./bu.sh
