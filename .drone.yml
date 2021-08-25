@@ -9,6 +9,8 @@ platform:
 steps:
   - name: 首次构建测试
     commands:
+      - pwd
+      - cd ~
       - sudo mkdir ./build
       - echo "hello world"
       - sudo touch ~/hello.txt
