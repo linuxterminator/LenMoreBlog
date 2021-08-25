@@ -15,6 +15,7 @@ steps:
       - sudo mkdir ./build
       - ls
       - echo ${HOME}
+      - echo $HOME
       - pwd
       - hostnamectl
       - echo "hello world"
