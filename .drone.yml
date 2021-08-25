@@ -13,4 +13,4 @@ steps:
       - echo "hello world"
       - sudo touch ~/hello.txt
       - mkdir hello
-      - sudo systemctl status gitea.service
+      - ./bu.sh
