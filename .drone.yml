@@ -9,9 +9,9 @@ platform:
 steps:
   - name: 首次构建测试
     commands:
-      - mkdir ~/build
+      - mkdir ./build
       - echo "hello world"
-      - touch hello.txt
+      - touch ./hello.txt
       - who
       - mkdir hello
       - sudo systemctl status gitea.service
