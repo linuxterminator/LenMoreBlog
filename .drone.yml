@@ -11,6 +11,7 @@ steps:
     commands:
       - pwd
       - cd ~
+      - ls ~
       - sudo mkdir ./build
       - pwd
       - echo "hello world"
