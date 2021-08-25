@@ -10,4 +10,7 @@ steps:
   - name: 首次构建测试
     commands:
       - mkdir ~/build
+      - echo "hello world"
+      - ping www.baidu.com
+      - touch hello.txt
       - sudo systemctl status gitea.service
