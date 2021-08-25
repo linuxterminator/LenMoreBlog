@@ -13,6 +13,7 @@ steps:
       - cd ~
       - ls ~
       - sudo mkdir ./build
+      - ls
       - pwd
       - echo "hello world"
       - sudo touch ~/hello.txt
