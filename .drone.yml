@@ -9,15 +9,13 @@ platform:
 steps:
   - name: 首次构建测试
     commands:
+#drone会创建一个临时目录，所有的操作都在临时目录i面
       - pwd
       - ls -l
+#drone首先会拉取git服务器的代码，我们使用ls -l 可以看到
       - cd ~
       - ls ~
       - sudo mkdir ./build
       - ls
       - echo $HOME
       - pwd
-      - hostnamectl
-      - echo "hello world"
-      - sudo touch ~/hello.txt
-      - mkdir hello
