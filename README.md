@@ -4,7 +4,7 @@
 ## 介绍
 `LenMore`是我个人学习在学习`sprngboot`项目的过程中制作的个人博客项目  
 在我学习`springboot`的过程中我遇到了很多困难，希望我的学习过程可以给同为学习者的你提供方向和参考
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=luolikong950412&show_icons=true&theme=dracula&)  
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=linuxterminator&show_icons=true&theme=dracula&)  
 
 ## 项目依赖
 这个项目使用了如下工具  
