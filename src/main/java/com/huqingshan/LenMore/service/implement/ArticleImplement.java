@@ -1,5 +1,5 @@
 package com.huqingshan.LenMore.service.implement;
-import com.huqingshan.LenMore.dao.ArticleDao;
+import com.huqingshan.LenMore.model.entity.Article;
 import com.huqingshan.LenMore.mapper.ArticleMapper;
 import com.huqingshan.LenMore.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,15 @@ public class ArticleImplement implements ArticleService {
     private ArticleMapper articlemapper;
 
     @Override
-    public List<ArticleDao> getArticles() {
+    public Optional<List<Article>> getArticles() {
 //        对于数组，使用optional需要另外处理
-        List<ArticleDao> articleDaoList = articlemapper.getArticles();
-        Optional<List<ArticleDao>> optionalArticleDaoList = Optional.ofNullable(articleDaoList);
-        return null;
+        List<Article> articleList = articlemapper.getArticles();
+        Optional<List<Article>> optionalArticleDaoList = Optional.ofNullable(articleList);
+        return optionalArticleDaoList;
     }
 
     @Override
-    public int postArticle(ArticleDao article) {
+    public int postArticle(Article article) {
         return 0;
     }
 
@@ -31,7 +31,7 @@ public class ArticleImplement implements ArticleService {
     }
 
     @Override
-    public Optional<ArticleDao> getArticleById(){
-        return articlemapper.getArticleById();
+    public Optional<Article> getArticleById(int id){
+        return articlemapper.getArticleById(id);
     }
 }

@@ -1,16 +1,16 @@
 package com.huqingshan.LenMore.service;
 
-import com.huqingshan.LenMore.dao.ArticleDao;
+import com.huqingshan.LenMore.model.entity.Article;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ArticleService {
-    List<ArticleDao> getArticles();
+    Optional<List<Article>> getArticles();
 
-    int postArticle(ArticleDao article);
+    int postArticle(Article article);
 
     int deleteArticle(int id);
 
-    Optional<ArticleDao> getArticleById();
+    Optional<Article> getArticleById(int id);
 }

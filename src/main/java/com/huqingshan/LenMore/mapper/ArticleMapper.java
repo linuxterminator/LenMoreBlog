@@ -1,6 +1,6 @@
 package com.huqingshan.LenMore.mapper;
 
-import com.huqingshan.LenMore.dao.ArticleDao;
+import com.huqingshan.LenMore.model.entity.Article;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -8,11 +8,11 @@ import java.util.Optional;
 
 @Mapper
 public interface ArticleMapper {
-    List<ArticleDao> getArticles();
+    List<Article> getArticles();
 
-    Optional<ArticleDao> getArticleById();
+    Optional<Article> getArticleById(int id);
 
-    ArticleDao addArticle(ArticleDao articleDao);
+    Article addArticle(Article article);
 
-    ArticleDao deleteArticle(int id);
+    Article deleteArticle(int id);
 }

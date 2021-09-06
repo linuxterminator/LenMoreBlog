@@ -4,7 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huqingshan.LenMore.mapper.ArticleMapper">
 <!--这个id不能写成namesapce的那种形式-->
-    <select id="getArticleById" resultType="com.huqingshan.LenMore.dao.ArticleDao">
-        select title,content,author from article where id = 2
+    <select id="getArticleById" resultType="com.huqingshan.LenMore.model.entity.Article">
+        select title,content,author from article where id = #{id}
+    </select>
+
+    <select id="getArticles" resultType="com.huqingshan.LenMore.model.entity.Article">
+        select id,title,content,author from article
     </select>
 </mapper>
