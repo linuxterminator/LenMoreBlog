@@ -13,4 +13,6 @@ public interface ArticleService {
     int deleteArticle(int id);
 
     Optional<Article> getArticleById(int id);
+
+    int updateArticle(Article article);
 }

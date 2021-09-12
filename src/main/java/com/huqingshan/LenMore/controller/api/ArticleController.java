@@ -2,8 +2,8 @@ package com.huqingshan.LenMore.controller.api;
 
 import com.huqingshan.LenMore.model.entity.Article;
 import com.huqingshan.LenMore.service.ArticleService;
-import com.huqingshan.LenMore.utils.MybatisException;
-import com.huqingshan.LenMore.utils.result.SuccessResult;
+import com.huqingshan.LenMore.utils.CustomException.MybatisException;
+import com.huqingshan.LenMore.utils.resultUnitl.SuccessResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.*;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 import java.util.List;
-import java.util.Set;
 
 /**
  * 文章controller
@@ -40,14 +36,15 @@ public class ArticleController {
 
 	@ApiOperation("通过id删除文章")
 	@DeleteMapping("/article/{id}")
-	public int deleteArticle(@PathVariable("id") @NotBlank int id) {
+	public SuccessResult<Object> deleteArticle(@PathVariable("id") @Min(value = 0,message = "删除id最小为0") int id) {
 
-		return id;
+		articleService.deleteArticle(id);
+		return SuccessResult.success(null,HttpStatus.OK,"删除文章成功");
 	}
 
 	@ApiOperation("通过id获取文章")
 	@GetMapping("/article/{id}")
-	public SuccessResult<Article> getArticle(@PathVariable("id") @NotNull(message = "获取id不能为空") int id) {
+	public SuccessResult<Article> getArticle(@PathVariable("id") @Min(value = 0,message = "查询id最小为0") int id) {
 
 		Article article = articleService.getArticleById(id).orElseThrow(()->new MybatisException("该id无法查找到数据"));
 		return SuccessResult.success(article, HttpStatus.OK,"数据获取成功");
@@ -55,15 +52,17 @@ public class ArticleController {
 
 	@ApiOperation("提交文章")
 	@PostMapping("/article")
-	public int postArticle(@Valid @RequestBody Article article) {
+	public SuccessResult<Object> postArticle(@RequestBody @Valid Article article) {
 
-		System.out.println(article);
-		return 0;
+		articleService.postArticle(article);
+		return SuccessResult.success(null,HttpStatus.OK,"提交文章成功");
 	}
 
 	@ApiOperation("修改文章")
 	@PutMapping("/article")
-	public void updateArticle(@RequestBody Article article){
+	public SuccessResult<Object> updateArticle(@RequestBody Article article){
 
+		articleService.updateArticle(article);
+		return SuccessResult.success(null,HttpStatus.OK,"修改文章成功");
 	}
 }

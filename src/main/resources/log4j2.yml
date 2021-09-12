@@ -1,0 +1,9 @@
+Configuration:
+  appenders:
+    Console:
+      name: STD_OUT
+      target: SYSTEM_OUT
+      PatternLayout: %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+#    File:
+#      name: File
+

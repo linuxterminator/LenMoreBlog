@@ -34,4 +34,9 @@ public class ArticleImplement implements ArticleService {
     public Optional<Article> getArticleById(int id){
         return articlemapper.getArticleById(id);
     }
+
+    @Override
+    public int updateArticle(Article article) {
+        return 0;
+    }
 }

@@ -1,7 +1,6 @@
 package com.huqingshan.LenMore.controller.error;
 
-import com.huqingshan.LenMore.utils.result.ErrorInfo;
-import com.huqingshan.LenMore.utils.result.ErrorResult;
+import com.huqingshan.LenMore.utils.resultUnitl.ErrorResult;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.http.HttpStatus;
@@ -9,9 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * error控制器
@@ -35,9 +31,7 @@ public class CustomErrorController extends AbstractErrorController {
         domain = getErrorUrl(httpServletRequest);
         error_message = getErrorMessage(httpServletRequest);
 
-        List<ErrorInfo> errorInfoList = new ArrayList<>();
-        errorInfoList.add(new ErrorInfo(domain,httpStatus.getReasonPhrase(),error_message));
-        return new ErrorResult(httpStatus,"请求错误",errorInfoList);
+        return new ErrorResult<>(httpStatus,"请求错误",null);
     }
 
     /**

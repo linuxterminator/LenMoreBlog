@@ -1,4 +1,4 @@
-package com.huqingshan.LenMore.utils.result;
+package com.huqingshan.LenMore.utils.resultUnitl;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;
@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
  */
 @Data
 public class SuccessResult<T> {
+
     private T data;
     private HttpStatus code;
     private String message;
