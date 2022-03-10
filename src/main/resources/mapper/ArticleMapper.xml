@@ -2,13 +2,39 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.huqingshan.LenMore.mapper.ArticleMapper">
+<mapper namespace="com.huqingshan.LenMore.repository.dao.ArticleRepository">
 <!--这个id不能写成namesapce的那种形式-->
+    <select id="findAll">
+        select * from users;
+    </select>
+
+    <insert id="add">
+
+    </insert>
+
+    <update id="update">
+
+    </update>
+
+    <select id="findByPrimaryKey">
+        select * from users where id =
+    </select>
+
+    <delete id="deleteByPrimaryKey">
+        delete from users where id =
+    </delete>
+
+
     <select id="getArticleById" resultType="com.huqingshan.LenMore.model.entity.Article">
         select title,content,author from article where id = #{id}
     </select>
 
     <select id="getArticles" resultType="com.huqingshan.LenMore.model.entity.Article">
-        select id,title,content,author from article
+        select id,title,content,author,contentMD,status,updateTime,createTime from article
     </select>
+
+    <select id="findByTitle">
+
+    </select>
+
 </mapper>

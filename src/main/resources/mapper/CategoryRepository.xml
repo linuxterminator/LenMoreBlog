@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huqingshan.LenMore.repository.dao.CategoryRepository">
+
+    <select id="findAll" resultType="Category">
+        select * from categorys;
+    </select>
+
+    <insert id="add">
+
+    </insert>
+
+    <update id="update">
+
+    </update>
+
+    <select id="findByPrimaryKey" resultType="Category">
+        select * from categorys where id = #{id}
+    </select>
+
+    <delete id="deleteByPrimaryKey">
+        delete from categorys where id = #{id}
+    </delete>
+
+    <select id="findByName">
+        select * from category where name = #{name}
+    </select>
+
+</mapper>

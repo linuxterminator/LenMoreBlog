@@ -1,42 +1,75 @@
 package com.huqingshan.LenMore.service.implement;
 import com.huqingshan.LenMore.model.entity.Article;
-import com.huqingshan.LenMore.mapper.ArticleMapper;
+import com.huqingshan.LenMore.repository.dao.*;
 import com.huqingshan.LenMore.service.ArticleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class ArticleImplement implements ArticleService {
-    @Autowired
-    private ArticleMapper articlemapper;
+public class ArticleImplement implements ArticleService{
 
-    @Override
-    public Optional<List<Article>> getArticles() {
-//        对于数组，使用optional需要另外处理
-        List<Article> articleList = articlemapper.getArticles();
-        Optional<List<Article>> optionalArticleDaoList = Optional.ofNullable(articleList);
-        return optionalArticleDaoList;
+    private final ArticleRepository articleRepository;
+
+    private final TagRepository tagRepository;
+
+    private final CategoryRepository categoryRepository;
+
+    private final ArticleTagRepository articleTagRepository;
+
+    private final ArticleCategoryRepository articleCategoryRepository;
+
+    public ArticleImplement(
+            ArticleRepository articleRepository,
+            TagRepository tagRepository,
+            CategoryRepository categoryRepository,
+            ArticleTagRepository articleTagRepository,
+            ArticleCategoryRepository articleCategoryRepository){
+        this.articleRepository = articleRepository;
+        this.tagRepository = tagRepository;
+        this.categoryRepository = categoryRepository;
+        this.articleTagRepository = articleTagRepository;
+        this.articleCategoryRepository = articleCategoryRepository;
     }
 
     @Override
-    public int postArticle(Article article) {
+    public int DeleteByPrimaryKey(int key) {
         return 0;
     }
 
     @Override
-    public int deleteArticle(int id) {
+    public int add(Article data) {
         return 0;
     }
 
     @Override
-    public Optional<Article> getArticleById(int id){
-        return articlemapper.getArticleById(id);
+    public List<Article> FindAll() {
+        return null;
     }
 
     @Override
-    public int updateArticle(Article article) {
-        return 0;
+    public Article FindByPrimaryKey(int key) {
+        return null;
     }
 }
+
+// 通常，我们需要创建一个新的几个类ArticleVO来存放转换后的article，但是，我们可以使用collect
+// 使用Collectors.toList()转换成对应类型的List,在这里是List<ArticleVO>，但是，我们也可以自己指定
+//        List<ArticleVO> voList = new ArrayList<>();
+
+//        list.forEach(item->{
+//            voList.add(ConvertToVo(item));
+//        });
+// return voList;
+
+
+// 理论上对map里面每个元素的处理应该这样写，但是，但是这里ConvertToVo是当前class的方法，所以需要使用当前对象
+//        return list
+//                .stream()
+//                .map(ArticleImplement::ConvertToVo)
+//                .collect(Collectors.toList());
+
+// 或者map中使用lambda表达式
+//        return list.stream().map(item->ConvertToVo(item)).collect(Collectors.toList());
+
+// map中的对象是Article，但是如果我们想调用实例对象的方法我们需要先获取这个对象，但是Article没有，参考方法引用的对象方法，实例方法

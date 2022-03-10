@@ -1,7 +1,9 @@
 package com.huqingshan.LenMore.core;
 
-import com.huqingshan.LenMore.utils.resultUnitl.ErrorResult;
+import com.huqingshan.LenMore.model.result.BaseResult;
+import com.huqingshan.LenMore.utils.CustomException.AlreadyExistsException;
 import com.huqingshan.LenMore.utils.CustomException.MybatisException;
+import com.huqingshan.LenMore.utils.CustomException.NotFoundException;
 import com.huqingshan.LenMore.utils.validationUtil.ErrorToMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,13 +18,22 @@ import java.util.*;
  * 统一错误处理类，用来处理自定义异常
  */
 
-//@RestControllerAdvice(basePackages = {"com.huqingshan.LenMore.controller.*"})
 @RestControllerAdvice
 public class ControllerExceptionHandler<T> {
 
     @ExceptionHandler(MybatisException.class)
-    public ErrorResult mybatisExceptionHandler(MybatisException mybatisException){
-        return new ErrorResult(HttpStatus.NOT_FOUND,mybatisException.getMessage(),null);
+    public BaseResult<String> mybatisExceptionHandler(MybatisException mybatisException){
+        return BaseResult.fail(mybatisException.getMessage(),null,HttpStatus.NOT_FOUND.value());
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public BaseResult<String> NotFounDException(NotFoundException notFoundException){
+        return BaseResult.fail(notFoundException.getMessage(),null,400);
+    }
+
+    @ExceptionHandler(AlreadyExistsException.class)
+    public BaseResult<String> AlreadyExistsException(AlreadyExistsException alreadyExistsException){
+        return BaseResult.fail(alreadyExistsException.getMessage(),null,400);
     }
 
     /**
@@ -30,27 +41,26 @@ public class ControllerExceptionHandler<T> {
       * @param methodArgumentNotValidException
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ErrorResult<Map<String,String>> ValidExceptionHandler(MethodArgumentNotValidException methodArgumentNotValidException){
+    public BaseResult<Map<String,String>> ValidExceptionHandler(MethodArgumentNotValidException methodArgumentNotValidException){
 
         Map<String,String> errorMap = ErrorToMap.getBindExceptionMap(methodArgumentNotValidException);
-        return new ErrorResult<>(HttpStatus.BAD_REQUEST,"POST提交数据错误",errorMap);
+        return BaseResult.fail(errorMap,"RequestBody验证错误",0);
     }
 
     /**
      * 请求类型异常处理
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ErrorResult<String> validTypeHandle(){
-        return new ErrorResult<>(HttpStatus.BAD_REQUEST,"请求参数类型错误",null);
+    public BaseResult<String> validTypeHandle(){
+        return BaseResult.fail("请求类型异常",null,0);
     }
 
     /**
      * get请求异常处理
+     * 获取被处理成map的错误信息并封装
      */
     @ExceptionHandler(ConstraintViolationException.class)
-    public ErrorResult<Map<String,String>> validParamHandle(ConstraintViolationException constraintViolationException){
-
-        //=======================
+    public BaseResult<Map<String,String>> validParamHandle(ConstraintViolationException constraintViolationException){
 
         List<String> list = new ArrayList<>();
         /**
@@ -61,10 +71,9 @@ public class ControllerExceptionHandler<T> {
             for(ConstraintViolation<?> constraintViolation : set){
                 list.add(constraintViolation.getMessage());
             }
-            //===================
 
         Map<String,String> errorMap = ErrorToMap.getConstrainValionsErrorMap(constraintViolationException);
 
-        return new ErrorResult<>(HttpStatus.BAD_REQUEST,"GET请求参数验证错误",errorMap);
+        return BaseResult.fail(errorMap,"get请求异常处理",0);
     }
 }

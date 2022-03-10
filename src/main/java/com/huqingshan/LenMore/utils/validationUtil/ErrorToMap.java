@@ -6,6 +6,9 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.*;
 
+/**
+ * 把错误转换成map形式
+ */
 public class ErrorToMap {
 
     public ErrorToMap(){}
