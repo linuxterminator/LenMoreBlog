@@ -1,13 +1,15 @@
 package com.huqingshan.LenMore.config;
 
+import com.huqingshan.LenMore.config.converter.EnumConverter;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * 添加跨域
  * 添加静态资源处理，调用外部文件
+ * 添加自定义额converter
  */
 @Configuration
 public class LenMoreMvcConfig implements WebMvcConfigurer {
@@ -19,8 +21,9 @@ public class LenMoreMvcConfig implements WebMvcConfigurer {
                 .allowedMethods("GET","POST","DELETE","PUT");
     }
 
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        WebMvcConfigurer.super.addResourceHandlers(registry);
-//    }
+    @Override
+    public void addFormatters(FormatterRegistry registry){
+        registry.addConverter(new EnumConverter());
+    }
+
 }

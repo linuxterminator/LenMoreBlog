@@ -2,6 +2,7 @@ package com.huqingshan.LenMore.service.implement;
 
 import com.huqingshan.LenMore.model.dto.CategoryDto;
 import com.huqingshan.LenMore.model.entity.Category;
+import com.huqingshan.LenMore.model.enums.SortEnum;
 import com.huqingshan.LenMore.repository.dao.CategoryRepository;
 import com.huqingshan.LenMore.service.CategoryService;
 import com.huqingshan.LenMore.utils.CustomException.AlreadyExistsException;
@@ -37,7 +38,7 @@ public class CategoryImplement implements CategoryService{
     }
 
     @Override
-    public List<Category> FindAll() {
+    public List<Category> FindAll(SortEnum sortEnum) {
         return categoryRepository.findAll();
     }
 

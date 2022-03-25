@@ -2,6 +2,7 @@ package com.huqingshan.LenMore.service.implement;
 
 import com.huqingshan.LenMore.model.dto.TagDto;
 import com.huqingshan.LenMore.model.entity.Tag;
+import com.huqingshan.LenMore.model.enums.SortEnum;
 import com.huqingshan.LenMore.repository.dao.TagRepository;
 import com.huqingshan.LenMore.service.TagService;
 import com.huqingshan.LenMore.utils.CustomException.AlreadyExistsException;
@@ -37,7 +38,7 @@ public class TagServiceImplement implements TagService {
     }
 
     @Override
-    public List<Tag> FindAll() {
+    public List<Tag> FindAll(SortEnum sortEnum) {
         return tagRepository.findAll();
     }
 

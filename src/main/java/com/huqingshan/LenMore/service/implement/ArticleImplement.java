@@ -1,5 +1,6 @@
 package com.huqingshan.LenMore.service.implement;
 import com.huqingshan.LenMore.model.entity.Article;
+import com.huqingshan.LenMore.model.enums.SortEnum;
 import com.huqingshan.LenMore.repository.dao.*;
 import com.huqingshan.LenMore.service.ArticleService;
 import org.springframework.stereotype.Service;
@@ -43,7 +44,7 @@ public class ArticleImplement implements ArticleService{
     }
 
     @Override
-    public List<Article> FindAll() {
+    public List<Article> FindAll(SortEnum sortEnum) {
         return null;
     }
 

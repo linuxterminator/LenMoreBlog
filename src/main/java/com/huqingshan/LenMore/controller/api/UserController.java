@@ -2,6 +2,7 @@ package com.huqingshan.LenMore.controller.api;
 
 import com.huqingshan.LenMore.model.dto.UserDto;
 import com.huqingshan.LenMore.model.entity.User;
+import com.huqingshan.LenMore.model.enums.SortEnum;
 import com.huqingshan.LenMore.service.UserService;
 import com.huqingshan.LenMore.utils.core.BeanUtils;
 import io.swagger.annotations.Api;
@@ -29,9 +30,9 @@ public class UserController {
 	@GetMapping(value="")
 	public List<UserDto> getUsers(
 	        @ApiParam("排序参数")
-			@RequestParam(value = "sort",defaultValue = "DESC") String sort)
+			@RequestParam(value = "sort",defaultValue = "DESC") SortEnum sort)
 	{
-	    return BeanUtils.mapAsList(userService.FindAll(),UserDto.class);
+	    return BeanUtils.mapAsList(userService.FindAll(sort),UserDto.class);
 	}
 
 	@ApiOperation("通过id获取用户")

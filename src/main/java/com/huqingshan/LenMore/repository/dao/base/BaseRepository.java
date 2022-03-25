@@ -1,5 +1,7 @@
 package com.huqingshan.LenMore.repository.dao.base;
 
+import com.huqingshan.LenMore.model.enums.SortEnum;
+
 import java.util.List;
 import java.util.Optional;
 

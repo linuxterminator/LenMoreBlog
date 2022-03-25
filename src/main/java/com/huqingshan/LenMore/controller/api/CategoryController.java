@@ -2,6 +2,7 @@ package com.huqingshan.LenMore.controller.api;
 
 import com.huqingshan.LenMore.model.dto.CategoryDto;
 import com.huqingshan.LenMore.model.entity.Category;
+import com.huqingshan.LenMore.model.enums.SortEnum;
 import com.huqingshan.LenMore.service.CategoryService;
 import com.huqingshan.LenMore.utils.core.BeanUtils;
 import io.swagger.annotations.Api;
@@ -53,9 +54,9 @@ public class CategoryController {
     @ApiOperation("查找所有")
     public List<CategoryDto> findAll(
             @ApiParam("排序参数")
-            @RequestParam(value = "sort",defaultValue = "DESC") String sort)
+            @RequestParam(value = "sort",defaultValue = "DESC") SortEnum sort)
     {
-        return BeanUtils.mapAsList(categoryService.FindAll(),CategoryDto.class);
+        return BeanUtils.mapAsList(categoryService.FindAll(sort),CategoryDto.class);
     }
 
 }

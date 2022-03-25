@@ -3,6 +3,8 @@ package com.huqingshan.LenMore.model.entity;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
+import javax.validation.constraints.Size;
+
 /**
  * 文章标签对应的数据库模型
  */

@@ -1,5 +1,7 @@
 package com.huqingshan.LenMore.service.base;
 
+import com.huqingshan.LenMore.model.enums.SortEnum;
+
 import java.util.List;
 
 /**
@@ -18,7 +20,7 @@ public interface CrudService<D> {
 
     int add(D data);
 
-    List<D> FindAll();
+    List<D> FindAll(SortEnum sortEnum);
 
     D FindByPrimaryKey(int key);
 

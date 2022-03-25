@@ -1,5 +1,6 @@
 package com.huqingshan.LenMore.service.base;
 
+import com.huqingshan.LenMore.model.enums.SortEnum;
 import com.huqingshan.LenMore.repository.mapper.CurdRepository;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public abstract class AbstractCrudService<D> implements CrudService<D> {
     }
 
     @Override
-    public List<D> FindAll() {
+    public List<D> FindAll(SortEnum sortEnum) {
         return curdRepository.BasefindAll();
     }
 

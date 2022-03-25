@@ -17,6 +17,10 @@
 
     </insert>
 
+    <select id="findCountByName">
+        select count(name) from tag
+    </select>
+
     <update id="update">
 
     </update>

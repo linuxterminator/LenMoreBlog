@@ -31,16 +31,16 @@ public class TagController {
     {
         log.info("查找所有标签");
         log.info("枚举常量为："+sort);
-        return BeanUtils.mapAsList(tagservice.FindAll(),TagDto.class);
+        return BeanUtils.mapAsList(tagservice.FindAll(sort),TagDto.class);
     }
 
-    @GetMapping(value="/{id}")
+    @GetMapping(value="",params = {"id"})
     @ApiOperation("主键查找")
     public TagDto FindTagById(
             @ApiParam("标签ID")
-            @PathVariable("id") int id)
+            @RequestParam("id") int id)
     {
-        log.info("标签主键查找");
+        log.info("标签主键查找"+id);
         return BeanUtils.map(tagservice.FindByPrimaryKey(id),TagDto.class);
     }
 

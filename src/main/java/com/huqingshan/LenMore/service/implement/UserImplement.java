@@ -1,6 +1,7 @@
 package com.huqingshan.LenMore.service.implement;
 
 import com.huqingshan.LenMore.model.entity.User;
+import com.huqingshan.LenMore.model.enums.SortEnum;
 import com.huqingshan.LenMore.repository.dao.UserRepository;
 import com.huqingshan.LenMore.service.UserService;
 import com.huqingshan.LenMore.utils.CustomException.NotFoundException;
@@ -39,7 +40,7 @@ public class UserImplement implements UserService {
     }
 
     @Override
-    public List<User> FindAll() {
+    public List<User> FindAll(SortEnum sortEnum) {
         return userRepository.findAll();
     }
 
