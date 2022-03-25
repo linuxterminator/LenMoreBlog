@@ -15,7 +15,7 @@
 - [ ] htool
 - [ ] pagehelper
 - [ ] jwt
-- [ ] mybatis
+- [x] mybatis-springboot-starter
 - [ ] mysql
 - [ ] sa-token
 ## 构建
@@ -27,6 +27,9 @@ mvn install
 #构建
 mvn package
 ```
+## 项目数据库
+项目的数据库结构如下
+
 ## 运行
 ```shell
 #使用mvn运行
