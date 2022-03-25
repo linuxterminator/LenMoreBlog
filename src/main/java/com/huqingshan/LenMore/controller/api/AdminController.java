@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AdminController {
 
-    @PostMapping("/login")
+    @PostMapping(value="/login")
     @ApiOperation("用户登陆")
     public void login(){
 
     }
 
-    @PostMapping("/logout")
+    @PostMapping(value="/logout")
     @ApiOperation("用户登出")
     public void logout(){
 

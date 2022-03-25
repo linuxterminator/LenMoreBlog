@@ -1,4 +1,4 @@
-package com.huqingshan.LenMore.constant;
+package com.huqingshan.LenMore.model.constant;
 
 /**
  * 常量类，用来存储一些信息

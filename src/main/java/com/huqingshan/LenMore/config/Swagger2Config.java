@@ -7,7 +7,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-import static com.huqingshan.LenMore.constant.LenMoreConstant.*;
+import static com.huqingshan.LenMore.model.constant.LenMoreConstant.*;
 
 /**
  * 在3.0中，显式删除了@EnableSwagger2注解

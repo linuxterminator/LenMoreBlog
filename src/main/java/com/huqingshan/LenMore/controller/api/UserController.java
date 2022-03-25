@@ -6,6 +6,7 @@ import com.huqingshan.LenMore.service.UserService;
 import com.huqingshan.LenMore.utils.core.BeanUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -25,38 +26,57 @@ public class UserController {
 	}
 
 	@ApiOperation("获取所有用户")
-	@GetMapping("")
-	public List<UserDto> getUsers() {
+	@GetMapping(value="")
+	public List<UserDto> getUsers(
+	        @ApiParam("排序参数")
+			@RequestParam(value = "sort",defaultValue = "DESC") String sort)
+	{
 	    return BeanUtils.mapAsList(userService.FindAll(),UserDto.class);
 	}
 
 	@ApiOperation("通过id获取用户")
-	@GetMapping("/{id}")
-	public UserDto getUser(@PathVariable("id") @Min(value = 0,message = "查询id最小为0") int id) {
+	@GetMapping(value="/{id}")
+	public UserDto getUser(
+			@PathVariable("id")
+			@Min(value = 0,message = "查询id最小为0")
+			@ApiParam("用户ID") int id)
+	{
 		return BeanUtils.map(userService.FindByPrimaryKey(id),UserDto.class);
 	}
 
 	@ApiOperation("删除用户")
-	@DeleteMapping("/{id}")
-	public int deleteUser(@PathVariable("id") @Min(value = 0,message = "删除id最小为0") int id){
+	@DeleteMapping(value="/{id}")
+	public int deleteUser(
+			@PathVariable("id")
+			@ApiParam("用户id")
+			@Min(value = 0,message = "删除id最小为0") int id)
+	{
 		return userService.DeleteByPrimaryKey(id);
 	}
 
 	@ApiOperation("更新用户")
-	@PutMapping("")
-	public String putUser(@RequestBody @Valid UserController user){
+	@PutMapping(value = "")
+	public String putUser(
+			@RequestBody @Valid UserController user)
+	{
 		return "更新用户";
 	}
 
-	@GetMapping("/email/{email}")
+	@GetMapping(value = "",params={"email"})
 	@ApiOperation("通过邮箱获取用户")
-	public UserDto getByEmail(@RequestParam("email")String email){
+	public UserDto getByEmail(
+			@RequestParam(value = "email",required = true)
+			@ApiParam("用户邮箱") String email)
+	{
 		return BeanUtils.map(userService.findByEmail(email),UserDto.class);
 	}
 
-	@GetMapping("/nickname/{nickname}")
+	@GetMapping(value = "",params = {"nickname"})
 	@ApiOperation("通过昵称获取用户")
-	public UserDto getByNickName(@RequestParam("nickname")String nickname){
+	public UserDto getByNickName(
+			@RequestParam(value = "nickname",required = true)
+			@ApiParam("用户昵称") String nickname)
+	{
 		return BeanUtils.map(userService.findByNickName(nickname),UserDto.class);
 	}
 }
